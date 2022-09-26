@@ -12,13 +12,12 @@ import {
 } from '@chakra-ui/react';
 
 export default function Card({data}) {
-  console.log(data)
   return (
-    <Center py={6}>
+    <Center py={7}>
       <Box
         maxW={'320px'}
         w={'full'}
-        bg={useColorModeValue('white', 'gray.900')}
+        bg={'white'}
         boxShadow={'2xl'}
         rounded={'lg'}
         p={4}
@@ -44,74 +43,28 @@ export default function Card({data}) {
           }}
         />
         <Heading fontSize={'2xl'} fontFamily={'body'}>
-          {data.login}
+          {data.name}
         </Heading>
         <Text fontWeight={600} color={'gray.500'} mb={4}>
-          @lindsey_jam3s
+          @{data.login}
         </Text>
         <Text
           textAlign={'center'}
           color={useColorModeValue('gray.700', 'gray.400')}
-          px={3}>
-          {data.public_repos}
-          <Link href={'#'} color={'blue.400'}>
-            #tag
-          </Link>{' '}
-          me in your posts
+          px={3} fontWeight = 'bold'>
+          No of public repos : {data.public_repos}
+         
+        </Text>
+        <Text mt='3' fontWeight='bold'>
+          No of gists : {data.public_gists}
         </Text>
 
-        <Stack align={'center'} justify={'center'} direction={'row'} mt={6}>
-          <Badge
-            px={2}
-            py={1}
-            bg={useColorModeValue('gray.50', 'gray.800')}
-            fontWeight={'400'}>
-            #art
-          </Badge>
-          <Badge
-            px={2}
-            py={1}
-            bg={useColorModeValue('gray.50', 'gray.800')}
-            fontWeight={'400'}>
-            #photography
-          </Badge>
-          <Badge
-            px={2}
-            py={1}
-            bg={useColorModeValue('gray.50', 'gray.800')}
-            fontWeight={'400'}>
-            #music
-          </Badge>
-        </Stack>
+       
 
-        <Stack mt={8} direction={'row'} spacing={4}>
-          <Button
-            flex={1}
-            fontSize={'sm'}
-            rounded={'full'}
-            _focus={{
-              bg: 'gray.200',
-            }}>
-            Message
-          </Button>
-          <Button
-            flex={1}
-            fontSize={'sm'}
-            rounded={'full'}
-            bg={'blue.400'}
-            color={'white'}
-            boxShadow={
-              '0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)'
-            }
-            _hover={{
-              bg: 'blue.500',
-            }}
-            _focus={{
-              bg: 'blue.500',
-            }}>
-            Follow
-          </Button>
-        </Stack>
+        {/* <Stack mt={10} direction={'row'} spacing={8}> */}
+          
+         <Text fontStyle='oblique' fontWeight='semibold' mt='10'>Created at : {data.created_at.substring(0, 10)}</Text>
+        {/* </Stack> */}
       </Box>
     </Center>
   );

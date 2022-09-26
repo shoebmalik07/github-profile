@@ -21,25 +21,24 @@ const LoginScreen = () => {
   const [newData, setNewData] = useState({});
   const [show, setShow] = useState(false);
   // const [error,setError] = useState(false)
-
+  
 
   const fetchData =async ()=>{
     const {data} = await axios.get(`https://api.github.com/users/${name}`)
     setNewData(data)
-    console.log(data)
-  //   if(!newData.length){
-  //     setShow(false)
-  //     setError(true)
-  //   }else{
-  //     setShow(true)
-  //   }
+    
+
+  
   }
   const submitHandler = (e) => {
     e.preventDefault();
-    
+    // if(newData.message === "Not Found"){
+    //   setError(true)
+    // }
     fetchData()
     setShow(true)
-    console.log(newData)
+    
+    
     
 
   };
@@ -74,7 +73,6 @@ console.log(show)
         </form>
       </FormContainer>
     </Flex>
-    
     {
       show && (<Card data = {newData}/>)
     }
