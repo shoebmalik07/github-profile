@@ -5,11 +5,9 @@ import {
   FormLabel,
   Heading,
   Input,
-  Link,
-  Spacer,
-  Text,
+  Spacer
 } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import FormContainer from "./FormContainer";
 import axios from "axios";
 import Card from "./Card";
