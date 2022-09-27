@@ -11,6 +11,7 @@ export default function Card({ data }) {
   const createdDate = data.created_at ? data.created_at.substring(0, 10) : "";
 
   return (
+  
     <Center py={7}>
       <Box
         maxW={"320px"}
@@ -62,5 +63,6 @@ export default function Card({ data }) {
         </Text>
       </Box>
     </Center>
+   
   );
 }

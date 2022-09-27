@@ -5,26 +5,38 @@ import {
   FormLabel,
   Heading,
   Input,
-  Spacer
+  Spacer,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import FormContainer from "./FormContainer";
 import axios from "axios";
 import Card from "./Card";
+import ErrorMessage from "./ErrorMessage";
 
 const LoginScreen = () => {
   const [name, setName] = useState("");
   const [newData, setNewData] = useState({});
   const [show, setShow] = useState(false);
+  const [error, setError] = useState(false);
 
   const fetchData = async () => {
-    const { data } = await axios.get(`https://api.github.com/users/${name}`);
-    setNewData(data);
+    try {
+      const response = await axios.get(`https://api.github.com/users/${name}`);
+      console.log(response);
+      setNewData(response.data);
+      if (response.status === 200) {
+        setShow(true);
+        setError(false);
+      }
+    } catch (error) {
+      setError(true);
+      setShow(false);
+    }
   };
+
   const submitHandler = (e) => {
     e.preventDefault();
     fetchData();
-    setShow(true);
   };
   return (
     <>
@@ -56,6 +68,7 @@ const LoginScreen = () => {
         </FormContainer>
       </Flex>
       {show && <Card data={newData} />}
+      {error && <ErrorMessage />}
     </>
   );
 };
