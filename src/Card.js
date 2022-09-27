@@ -12,6 +12,10 @@ import {
 } from '@chakra-ui/react';
 
 export default function Card({data}) {
+
+  const createdDate = data.created_at ? data.created_at.substring(0,10): ''
+  // console.log(createdDate.substring(0,10))
+
   return (
     <Center py={7}>
       <Box
@@ -61,10 +65,9 @@ export default function Card({data}) {
 
        
 
-        {/* <Stack mt={10} direction={'row'} spacing={8}> */}
           
-         <Text fontStyle='oblique' fontWeight='semibold' mt='10'>Created at : {data.created_at.substring(0, 10)}</Text>
-        {/* </Stack> */}
+         <Text fontStyle='oblique' fontWeight='semibold' mt='10'>Created at : {createdDate}</Text>
+ 
       </Box>
     </Center>
   );
